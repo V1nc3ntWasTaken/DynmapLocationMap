@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.v1nc3ntwastaken</groupId>
-    <artifactId>dynmapLocationMap</artifactId>
+    <artifactId>dynmaplocationmap</artifactId> <!--leave lower-cased -->
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>dynmaplocationmap</name> <!--leave lower-cased -->
+    <name>DynmapLocationMap</name>
 
     <distributionManagement>
         <repository>
@@ -33,7 +33,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <outputFileName>DynmapLocationMap-${project.version}.jar</outputFileName>
                 </configuration>
             </plugin>
             <plugin>
@@ -48,6 +47,8 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <outputFile>DynmapLocationMap-${project.version}.jar</outputFile>
+                            <createSourcesJar>false</createSourcesJar>
                         </configuration>
                     </execution>
                 </executions>
