@@ -5,11 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.v1nc3ntwastaken</groupId>
-    <artifactId>DynmapLocationMap</artifactId>
+    <artifactId>dynmapLocationMap</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <name>dynmaplocationmap</name> <!--leave lower-cased -->
 
-    <name>DynmapLocationMap</name>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub V1nc3ntWasTaken Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/V1nc3ntWasTaken/DynmapLocationMap</url>
+        </repository>
+    </distributionManagement>
 
     <description>A plugin that takes a dynmap link, and formats it into a location link.</description>
     <properties>
