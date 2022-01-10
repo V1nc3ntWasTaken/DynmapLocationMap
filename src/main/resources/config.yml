@@ -1,0 +1,2 @@
+# Add the "/" after, and "http://" or "https://", or link will be incorrect
+dynmap-link: "https://localhost:8080/"

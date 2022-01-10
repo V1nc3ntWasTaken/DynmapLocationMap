@@ -1,0 +1,31 @@
+name: DynmapLocationMap
+version: '${project.version}'
+main: me.v1nc3ntwastaken.dynmaplocationmap.DynmapLocationMap
+api-version: 1.16
+depend: [ dynmap ]
+authors: [ V1nc3ntWasTaken ]
+description: A plugin that takes a dynmap link, and formats it into a location link.
+commands:
+  map:
+    permission: dynmaplocationmap.command.map
+    aliases: [location]
+    usage: /<command>
+    description: Show sender the map link, and their location (if they are not console).
+  mapadmin:
+    permission: dynmaplocationmap.command.mapadmin
+    aliases: [ma]
+    usage: /<command> reload
+    description: Allow user to reload the plugin.
+permissions:
+  dynmaplocationmap.command.*:
+    description: User can use /map and /mapadmin reload
+    default: op
+    children:
+      dynmaplocationmap.command.map: true
+      dynmaplocationmap.command.mapadmin: true
+  dynmaplocationmap.command.map:
+    description: User can use /map
+    default: true
+  dynmaplocationmap.command.mapadmin:
+    description: User can use /mapadmin
+    default: op
