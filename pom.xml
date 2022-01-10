@@ -33,6 +33,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <outputFileName>DynmapLocationMap-${project.version}.jar</outputFileName>
                 </configuration>
             </plugin>
             <plugin>
