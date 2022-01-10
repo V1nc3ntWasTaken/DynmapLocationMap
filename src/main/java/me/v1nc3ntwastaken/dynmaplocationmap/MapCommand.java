@@ -1,6 +1,5 @@
 package me.v1nc3ntwastaken.dynmaplocationmap;
 
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.Command;
@@ -15,24 +14,22 @@ public class MapCommand implements CommandExecutor {
         String link = DynmapLocationMap.getConfiguration().getString("dynmap-link", "https://localhost:8080/");
 
         TextComponent beginningSpace = new TextComponent(" |");
-        beginningSpace.setColor(ChatColor.GRAY);
+        beginningSpace.setColor(Colors.getSecondaryColor());
 
         TextComponent textSpacer = new TextComponent("   ");
 
         if (sender instanceof ConsoleCommandSender) {
             TextComponent mapLinkText = new TextComponent("Map Link: ");
-            mapLinkText.setColor(ChatColor.RED);
+            mapLinkText.setColor(Colors.getTextColor());
 
             TextComponent mapLink = new TextComponent();
             mapLink.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
-            mapLink.setColor(ChatColor.AQUA);
+            mapLink.setColor(Colors.getLinkColor());
 
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.RED + "  Available map links:");
+            sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getPrimaryColor() + "--------------------");
+            sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getTextColor() + "  Available map links:");
             sender.spigot().sendMessage(beginningSpace, textSpacer, mapLinkText, mapLinkText);
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
 
-            return true;
         } else {
             Entity entity = (Entity) sender;
 
@@ -45,22 +42,22 @@ public class MapCommand implements CommandExecutor {
                     "z=" + entity.getLocation().getBlockZ();
 
             TextComponent mapLinkText = new TextComponent("Map Link");
-            mapLinkText.setColor(ChatColor.AQUA);
+            mapLinkText.setColor(Colors.getLinkColor());
             mapLinkText.setUnderlined(true);
             mapLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link));
 
             TextComponent locationLinkText = new TextComponent("Location Link");
-            locationLinkText.setColor(ChatColor.AQUA);
+            locationLinkText.setColor(Colors.getLinkColor());
             locationLinkText.setUnderlined(true);
             locationLinkText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, locationLink));
 
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.RED + "  Available map links:");
+            sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getPrimaryColor() + "--------------------");
+            sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getTextColor() + "  Available map links:");
             sender.spigot().sendMessage(beginningSpace, textSpacer, mapLinkText);
             sender.spigot().sendMessage(beginningSpace, textSpacer, locationLinkText);
-            sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
 
-            return true;
         }
+        sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getPrimaryColor() + "--------------------");
+        return true;
     }
 }

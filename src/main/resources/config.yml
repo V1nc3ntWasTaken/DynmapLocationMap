@@ -1,2 +1,8 @@
 # Add the "/" after, and "http://" or "https://", or link will be incorrect
 dynmap-link: "https://localhost:8080/"
+
+# Colors
+primary: '8'
+secondary: '7'
+link: 'b'
+text: 'c'

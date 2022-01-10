@@ -1,6 +1,5 @@
 package me.v1nc3ntwastaken.dynmaplocationmap;
 
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,10 +13,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public final class DynmapLocationMap extends JavaPlugin implements CommandExecutor, TabCompleter {
     static FileConfiguration config;
-    DynmapLocationMap plugin;
 
     @Override
     public void onEnable() {
@@ -25,11 +24,10 @@ public final class DynmapLocationMap extends JavaPlugin implements CommandExecut
 
         saveDefaultConfig();
 
-        getCommand("map").setExecutor(new MapCommand());
-        getCommand("mapadmin").setExecutor(this);
+        Objects.requireNonNull(getCommand("map")).setExecutor(new MapCommand());
+        Objects.requireNonNull(getCommand("mapadmin")).setExecutor(this);
 
         config = getConfig();
-        plugin = this;
     }
 
     @Override
@@ -48,18 +46,15 @@ public final class DynmapLocationMap extends JavaPlugin implements CommandExecut
         return Collections.emptyList();
     }
 
-    public DynmapLocationMap getInstance() {
-        return plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length > 0)
             if (args[0].equalsIgnoreCase("reload")) {
+                saveDefaultConfig();
                 reloadConfiguration();
-                sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
-                sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.RED + "  Plugin reloaded!");
-                sender.sendMessage(ChatColor.GRAY + " |" + ChatColor.DARK_GRAY + "--------------------");
+                sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getPrimaryColor() + "--------------------");
+                sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getTextColor() + "  Plugin reloaded!");
+                sender.sendMessage(Colors.getSecondaryColor() + " |" + Colors.getPrimaryColor() + "--------------------");
                 return true;
             }
 
